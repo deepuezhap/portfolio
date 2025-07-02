@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Deepu Joseph - Portfolio" />
+    <meta name="author" content="Deepu Joseph" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Deepu Joseph - Portfolio</title>
+
+    <style>
+      /* ===== Reset and basics ===== */
+      body, html {
+        margin: 0; padding: 0; 
+        font-family: 'Work Sans', sans-serif;
+        background-color: #fff;
+        color: #000;
+        scroll-behavior: smooth;
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      a:hover, a:focus {
+        color: #176e63;
+        outline: none;
+      }
+
+      /* Navbar */
+      .navbar-desctop, .navbar-mobile {
+        background-color: #fff !important;
+        border-bottom: 1px solid #000;
+        color: #000;
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+      }
+      .navbar-desctop {
+        height: 75px;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+      }
+      .navbar-desctop .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #000 !important;
+      }
+      .navbar-desctop .navbar-nav-desctop {
+        list-style: none;
+        display: flex;
+        margin-left: auto;
+      }
+      .navbar-desctop .nav-link {
+        color: #000 !important;
+        font-weight: 600;
+        padding: 0 15px;
+        line-height: 75px;
+        text-transform: uppercase;
+      }
+      .navbar-desctop .nav-link:hover {
+        color: #000 !important;
+      }
+      /* Mobile navbar */
+      .navbar-mobile {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+      }
+      .navbar-mobile.active {
+        display: flex;
+      }
+      .navbar-mobile .close {
+        font-size: 2rem;
+        align-self: flex-end;
+        cursor: pointer;
+        color: #000;
+      }
+      .navbar-mobile ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 40px;
+        flex-grow: 1;
+      }
+      .navbar-mobile .nav-link {
+        display: block;
+        padding: 15px 0;
+        font-weight: 600;
+        color: #000;
+        border-bottom: 1px solid #eee;
+      }
+      .navbar-mobile .nav-link:hover {
+        color: #000;
+      }
+      .navbar-mobile-footer {
+        text-align: center;
+        padding-top: 15px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* Loader */
+      .loader {
+        position: fixed;
+        z-index: 10000;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        position: relative;
+      }
+      .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #000;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: bounce 2.0s infinite ease-in-out;
+      }
+      .double-bounce2 {
+        animation-delay: -1.0s;
+      }
+      @keyframes bounce {
+        0%, 100% {
+          transform: scale(0);
+        } 50% {
+          transform: scale(1);
+        }
+      }
+
+      /* Masthead */
+      main.masthead {
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        padding: 0 15px;
+      }
+      .opener h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 3.5rem;
+        margin: 0;
+      }
+      .opener p.lead {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+      }
+
+      /* Sections */
+      section.section {
+        padding: 60px 0;
+        background-color: #fff;
+        color: #000;
+      }
+      h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #000;
+      }
+
+      /* About section */
+      #about p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+      }
+
+      /* Progress bars */
+      .progress {
+        background-color: #e6e6e6;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 15px;
+        margin-bottom: 1.5rem;
+      }
+      .progress-bar {
+        height: 100%;
+        background-color: #000;
+        width: 0;
+        transition: width 1s ease-in-out;
+      }
+
+      /* Education */
+      .row-experience {
+        margin-bottom: 2rem;
+        display: flex;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        margin: 6px auto 0;
+      }
+      .text-primary {
+        color: #000 !important;
+      }
+      .text-gray {
+        color: #555;
+      }
+
+      /* Projects carousel */
+      .carousel-project {
+        display: flex;
+        gap: 1rem;
+      }
+      .project-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        flex: 1 0 auto;
+      }
+      .project-item:hover {
+        box-shadow: 0 4px 15px rgba(35,165,146,0.3);
+      }
+      .text-primary.font-weight-bold {
+        color: #000;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin: 0;
+      }
+      .arrow-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      .arrow-buttons button {
+        background-color: #000;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        padding: 6px 14px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .arrow-buttons button:hover {
+        background-color: #176e63;
+      }
+
+      /* Modal */
+      .mfp-hide {
+        display: none;
+      }
+      .zoom-anim-dialog {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        color: #000;
+        border-radius: 6px;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        text-align: left;
+      }
+      .project-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .detail-item {
+        flex: 1 1 30%;
+      }
+      .project-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000;
+        color: #fff;
+      }
+      footer .section {
+        padding: 40px 0;
+      }
+      footer h6 {
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      footer p, footer a {
+        color: #fff;
+      }
+      footer a:hover {
+        color: #000;
+      }
+      .footer-copy {
+        background-color: #111;
+        color: #bbb;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .navbar-desctop .navbar-nav-desctop {
+          display: none;
+        }
+        .toggler {
+          display: block;
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: #000;
+          margin-left: auto;
+        }
+      }
+      @media (min-width: 769px) {
+        .toggler {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <!-- Click capture -->
+    <div class="click-capture d-lg-none"></div>
+
+    <!-- Navbar -->
+    <nav id="scrollspy" class="navbar navbar-desctop">
+      <a class="navbar-brand" href="#">Deepu</a>
+      <ul class="navbar-nav-desctop mr-auto d-none d-lg-flex">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+      </ul>
+
+      <!-- Toggler for mobile -->
+      <button class="toggler d-lg-none ml-auto" id="nav-toggler" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </nav>
+
+    <!-- Navbar Mobile -->
+    <nav id="navbar-mobile" class="navbar navbar-mobile" aria-hidden="true">
+      <ion-icon class="close" id="nav-close" name="close-outline" role="button" tabindex="0" aria-label="Close navigation"></ion-icon>
+
+      <!-- Social -->
+      <ul class="social-icons mr-auto mr-lg-0">
+        <li>
+          <a href="https://www.linkedin.com/in/deepu-joseph007/"><ion-icon name="logo-linkedin"></ion-icon></a>
+        </li>
+        <li>
+          <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-nav-mobile">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+      </ul>
+      <div class="navbar-mobile-footer">
+        <p>© 2025 Deepu. All Rights Reserved.</p>
+      </div>
+    </nav>
+
+    <!-- Masthead -->
+    <main id="home" class="masthead" role="main" tabindex="-1">
+      <div class="opener" role="banner">
+        <h1>Hey, I am Deepu Joseph.</h1>
+        <p class="lead mt-4 mb-5">I'm a Student</p>
+      </div>
+    </main>
+
+    <!-- About -->
+    <section id="about" class="section" tabindex="-1">
+      <div class="container">
+        <h2 data-aos="fade-up">About Me</h2>
+        <section class="mt-4">
+          <div class="row">
+            <div class="col-md-6 col-lg-5 mb-5 mb-md-0" data-aos="fade-up">
+              <p>
+                I am an MCA student with hands-on experience in full-stack
+                development, REST APIs, and SQL-based systems. Proficient in
+                Python, Django, FastAPI, and React. I've built multiple
+                end-to-end applications with real-world use cases. I am
+                passionate about technology, problem-solving, and eager to
+                contribute to fast-paced agile teams.
+              </p>
+              <p>
+                Languages: Python, JavaScript, Java, C, C++, PHP<br />
+                Tools: Git, Docker, Linux<br />
+                Databases: MySQL, SQLite, PostgreSQL
+              </p>
+            </div>
+            <div class="col-md-5 offset-lg-2" data-aos="fade-in" data-aos-delay="50">
+              <h6 class="mt-0">Python</h6>
+              <div class="progress mb-5">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  data-aos="width"
+                  style="width: 75%"
+                  aria-valuenow="75"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h6>JavaScript</h6>
+              <div class="progress mb-5">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  data-aos="width"
+                  style="width: 60%"
+                  aria-valuenow="60"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h6>Django & FastAPI</h6>
+              <div class="progress mb-5">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  data-aos="width"
+                  style="width: 70%"
+                  aria-valuenow="70"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h6>React</h6>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  data-aos="width"
+                  style="width: 65%"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h6>SQL</h6>
+              <div class="progress mb-5">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  data-aos="width"
+                  style="width: 60%"
+                  aria-valuenow="60"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section pb-0" tabindex="-1">
+      <div class="container">
+        <div class="row align-items-end">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2 class="mb-4 mb-md-0">Education</h2>
+          </div>
+          <div class="col-md-5 offset-md-1 text-md-right">
+            <h6 class="my-0 text-gray">
+              <a href="Deepu_Joseph_CV.pdf" class="btn btn-outline-primary"
+                >Download my CV</a
+              >
+            </h6>
+          </div>
+        </div>
+        <div class="mt-3 pt-3">
+          <div class="row-experience row" data-aos="fade-up">
+            <div class="col-md-1 text-center">
+              <div class="dot"></div>
+            </div>
+            <div class="col-md-11">
+              <h4 class="mt-2 text-primary text-uppercase">
+                Master of Computer Application
+              </h4>
+              <h6 class="mb-3 mt-0 text-gray">
+                College of Engineering, Trivandrum (CET)
+              </h6>
+              <p class="mb-4">2023 - 2025 | CGPA: 8.82</p>
+            </div>
+          </div>
+          <div class="row-experience row" data-aos="fade-up">
+            <div class="col-md-1 text-center">
+              <div class="dot"></div>
+            </div>
+            <div class="col-md-11">
+              <h4 class="mt-2 text-primary text-uppercase">
+                Bachelor of Computer Application
+              </h4>
+              <h6 class="mb-3 mt-0 text-gray">St. George’s College, Aruvithura</h6>
+              <p class="mb-4">2020 - 2023 | CGPA: 8.23</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" tabindex="-1">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6" data-aos="fade-up">
+            <h2 class="mb-3 mb-md-0">Featured Projects</h2>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <div class="arrow-buttons">
+              <button class="prev-btn" aria-label="Previous project">←</button>
+              <button class="next-btn" aria-label="Next project">→</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-3" data-aos="fade-in">
+          <div class="carousel-project owl-carousel d-flex align-items-center">
+            <div class="project-item mr-3" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="project1">
+              <a href="#project1" class="popup-with-zoom-anim" tabindex="-1">
+                <h3 class="text-primary font-weight-bold">CarNest - Online Car Buying &amp; Selling</h3>
+              </a>
+            </div>
+            <div class="project-item mr-3" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="project2">
+              <a href="#project2" class="popup-with-zoom-anim" tabindex="-1">
+                <h3 class="text-primary font-weight-bold">Expert System - Preprocessing Tool</h3>
+              </a>
+            </div>
+            <div class="project-item" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="project3">
+              <a href="#project3" class="popup-with-zoom-anim" tabindex="-1">
+                <h3 class="text-primary font-weight-bold">Bus Reservation System</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal Dialog 1 -->
+    <div id="project1" class="container mfp-hide zoom-anim-dialog" role="dialog" aria-modal="true" aria-labelledby="project1-title" tabindex="-1">
+      <h2 id="project1-title" class="mt-0">CarNest - Online Car Buying & Selling Platform</h2>
+      <div class="mt-5 pt-2 text-dark">
+        <div class="project-details">
+          <div class="detail-item col-md-6 col-lg-4">
+            <h6 class="my-0">About:</h6>
+            <span style="color: #000000;">
+              Developed a full-stack web app using FastAPI, React (Vite), and SQLite. Features include location-based filtering, image similarity search using FAISS and CLIP, and JWT-based authentication.
+            </span>
+          </div>
+          <div class="detail-item col-md-6 col-lg-4">
+            <h6 class="my-0">Technologies:</h6>
+            <span style="color: #000000;">FastAPI, React, SQLite, FAISS, CLIP, React Bootstrap, LocationIQ API</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-image">
+        <img alt="CarNest Logo" src="img/bg/logo-carnest.svg" />
+      </div>
+    </div>
+
+    <!-- Project Modal Dialog 2 -->
+    <div id="project2" class="container mfp-hide zoom-anim-dialog" role="dialog" aria-modal="true" aria-labelledby="project2-title" tabindex="-1">
+      <h2 id="project2-title" class="mt-0">Expert System - Preprocessing Tool</h2>
+      <div class="mt-5 pt-2 text-dark">
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="my-0">About:</h6>
+            <span style="color: #000000;">
+              Built a web app for step-by-step dataset preprocessing for machine learning, including missing value handling, encoding, and feature scaling.
+            </span>
+          </div>
+          <div class="col-md-3">
+            <h6 class="my-0">Technologies:</h6>
+            <span style="color: #000000;">HTML, CSS, Django, Python, MySQL</span>
+          </div>
+        </div>
+      </div>
+      <img alt="Expert System" class="mt-5 pt-2 w-100" src="img/bg/expert-system.jpg" />
+    </div>
+
+    <!-- Project Modal Dialog 3 -->
+    <div id="project3" class="container mfp-hide zoom-anim-dialog" role="dialog" aria-modal="true" aria-labelledby="project3-title" tabindex="-1">
+      <h2 id="project3-title" class="mt-0 text-center">Bus Reservation System</h2>
+      <div class="mt-5 pt-2 text-dark">
+        <div
+          class="row justify-content-center"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+          "
+        >
+          <h6 class="my-0">About:</h6>
+          <span style="color: #000000;">
+            Designed a Django-based web platform for users to search and book bus tickets based on location.
+          </span>
+          <h6 class="my-0 mt-4">Technologies:</h6>
+          <span style="color: #000000;">Django, HTML, CSS, JavaScript, Bootstrap</span>
+        </div>
+      </div>
+      <img alt="Bus Reservation" class="mt-5 pt-2 w-100" src="img/bg/bus-reservation.jpg" />
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="section bg-dark py-5 pb-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-3">
+              <h6 class="text-white mb-4">Phone:</h6>
+              <p class="text-white mb-4">+91 8590440742</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h6 class="text-white mb-4">Email:</h6>
+              <p class="text-white mb-4">deepuezhap007@gmail.com</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h6 class="text-white mb-4">Follow me:</h6>
+              <ul class="social-icons">
+                <li>
+                  <a href="https://www.linkedin.com/in/deepu-joseph007/">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy section-sm">
+        <div class="container">© 2025 Deepu Joseph. All Rights Reserved</div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="js/jarallax.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/interface.js"></script>
+
+    <!-- Carousel and Popup scripts -->
+    <script>
+      $(document).ready(function () {
+        var owl = $(".owl-carousel");
+        owl.owlCarousel({
+          items: 3, // Number of items to show
+          loop: true, // Loop the items
+          margin: 10, // Margin between items
+          nav: false, // Disable default navigation
+          dots: true, // Enable dots navigation
+          responsive: {
+            0: { items: 1 },
+            600: { items: 2 },
+            1000: { items: 3 }
+          }
+        });
+
+        // Custom Navigation Events
+        $(".prev-btn").click(function () {
+          owl.trigger("prev.owl.carousel");
+        });
+
+        $(".next-btn").click(function () {
+          owl.trigger("next.owl.carousel");
+        });
+
+        $(".popup-with-zoom-anim").magnificPopup({
+          type: "inline",
+          fixedContentPos: false,
+          removalDelay: 300,
+          mainClass: "my-mfp-zoom-in",
+        });
+
+        // Mobile Navbar toggle
+        $("#nav-toggler").click(function () {
+          $("#navbar-mobile").addClass("active").attr("aria-hidden", "false");
+          $("body").css("overflow", "hidden");
+        });
+
+        $("#nav-close").click(function () {
+          $("#navbar-mobile").removeClass("active").attr("aria-hidden", "true");
+          $("body").css("overflow", "");
+        });
+      });
+
+      // Optional: Hide loader after page load
+      $(window).on("load", function () {
+        $("#loader").fadeOut("slow");
+      });
+    </script>
+  </body>
+</html>
